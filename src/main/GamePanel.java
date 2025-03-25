@@ -532,7 +532,7 @@ public class GamePanel extends JPanel implements Runnable {
         g2.setColor(Color.white);
 
         if (promotion) {
-            g2.drawString("Promote to:", 840, 150);
+            g2.drawString("Promover para:", 810, 150);
             for(Piece piece : promoPieces) {
                 g2.drawImage(piece.image, piece.getX(piece.col), piece.getY(piece.row),
                         Board.SQUARE_SIZE, Board.SQUARE_SIZE, null);
@@ -540,29 +540,32 @@ public class GamePanel extends JPanel implements Runnable {
         }
         else {
             if(currentColor == WHITE) {
-                g2.drawString("White's turn", 840, 550);
+                g2.drawString("Vez das", 880, 550);
+                g2.drawString("Brancas", 880, 590);
                 if(checkingP != null && checkingP.color == BLACK) {
                     g2.setColor(Color.red);
-                    g2.drawString("The King", 860, 650);
-                    g2.drawString("Is in check!", 850, 700);
+                    g2.drawString("O rei está", 860, 650);
+                    g2.drawString("em xeque!", 863, 700);
                 }
             }
             else {
-                g2.drawString("Black's turn", 840, 250);
+                g2.drawString("Vez das", 880, 250);
+                g2.drawString("Pretas", 895, 290);
+
                 if(checkingP != null && checkingP.color == WHITE) {
                     g2.setColor(Color.red);
-                    g2.drawString("The King", 860, 100);
-                    g2.drawString("Is in check!", 850, 150);
+                    g2.drawString("O rei está", 860, 100);
+                    g2.drawString("em xeque!", 853, 150);
                 }
             }
         }
         if(gameover) {
             String s = "";
             if(currentColor == WHITE) {
-                s = "White Wins";
+                s = "Brancas Venceram";
             }
             else {
-                s = "Black Wins";
+                s = "Pretas Venceram";
             }
             g2.setFont(new Font("Poppins", Font.PLAIN, 90));
             g2.setColor(Color.green);
@@ -571,7 +574,7 @@ public class GamePanel extends JPanel implements Runnable {
         if(stalemate) {
             g2.setFont(new Font("Poppins", Font.PLAIN, 90));
             g2.setColor(Color.lightGray);
-            g2.drawString("Stalemate", 200, 420);
+            g2.drawString("Empate por afogamento", 200, 420);
         }
     }
 }
